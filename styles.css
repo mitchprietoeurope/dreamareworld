@@ -209,3 +209,66 @@
   .home .connect { min-height: 470px; background-position: center, 74% center, center; }
   .home .connect .connect-invitation { margin-top: 2px; }
 }
+
+/* Discography: show actual official cover artwork once uploaded, retaining
+   the original geometric placeholder while an image is unavailable. */
+.album-art .album-cover {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.album-art.has-cover .album-cover { opacity: 1; }
+.album-art.has-cover .album-orbit,
+.album-art.has-cover .album-title { visibility: hidden; }
+
+/* The discreet hidden door to the Dream Archive. */
+footer .hidden-archive {
+  display: inline-grid;
+  place-items: center;
+  width: 37px;
+  height: 43px;
+  flex: none;
+  opacity: .58;
+  color: #748a80;
+  border-radius: 3px;
+  transition: opacity .25s ease, color .25s ease, filter .25s ease, transform .25s ease;
+}
+footer .hidden-archive .archive-door-icon {
+  width: 25px;
+  height: 33px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+footer .hidden-archive .door-leaf,
+footer .hidden-archive .door-detail { transition: fill .25s ease, stroke .25s ease; }
+footer .hidden-archive:hover,
+footer .hidden-archive:focus-visible {
+  color: #d5b57b;
+  opacity: 1;
+  filter: drop-shadow(0 0 7px rgba(212,166,92,.55));
+  transform: translateY(-2px);
+}
+footer .hidden-archive:hover .door-leaf,
+footer .hidden-archive:focus-visible .door-leaf {
+  fill: rgba(212,166,92,.20);
+}
+footer .hidden-archive:hover .door-detail,
+footer .hidden-archive:focus-visible .door-detail { stroke: #f4d6a1; }
+footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  footer .hidden-archive,
+  footer .hidden-archive .door-leaf,
+  footer .hidden-archive .door-detail,
+  .album-art .album-cover { transition: none; }
+}
