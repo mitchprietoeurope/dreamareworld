@@ -53,6 +53,7 @@
   background-image:
     linear-gradient(90deg, rgba(5, 12, 14, .91) 0%, rgba(6, 15, 17, .78) 34%, rgba(7, 17, 18, .53) 70%, rgba(4, 10, 11, .64) 100%),
     linear-gradient(0deg, rgba(4, 10, 12, .85), transparent 32%, transparent 68%, rgba(4, 10, 12, .46)),
+    url("./assets/doors-background.png"),
     url("./assets/doors-mosaic.svg");
   background-size: cover;
   background-position: center center;
@@ -76,7 +77,8 @@
     background-image:
       linear-gradient(90deg, rgba(5, 12, 14, .91), rgba(6, 15, 17, .73)),
       linear-gradient(0deg, rgba(4, 10, 12, .84), transparent 55%, rgba(4, 10, 12, .38)),
-      url("./assets/doors-mosaic.svg");
+      url("./assets/doors-background.png"),
+    url("./assets/doors-mosaic.svg");
   }
   .hero-emphasis { letter-spacing: -.05em; }
 }
