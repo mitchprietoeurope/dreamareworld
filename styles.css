@@ -82,3 +82,130 @@
   }
   .hero-emphasis { letter-spacing: -.05em; }
 }
+
+
+/* Dreamare World — four cinematic environments.
+   Approved artwork is uploaded separately to /assets:
+   hero-dreamare-triunio.png, unfinished-atlas-map.png, waking-world-signals.png.
+   The already uploaded doors-background.png is reused for the discography.
+   Fallback gradients stay functional before image uploads finish. */
+.home .hero {
+  background-color: #081114;
+  background-image:
+    linear-gradient(90deg, rgba(5, 12, 14, .90) 0%, rgba(6, 15, 17, .70) 34%, rgba(7, 17, 18, .18) 66%, rgba(4, 10, 11, .10) 100%),
+    linear-gradient(0deg, rgba(4, 10, 12, .63) 0%, transparent 40%, rgba(4, 10, 12, .28) 100%),
+    url("./assets/hero-dreamare-triunio.png"),
+    radial-gradient(ellipse at 75% 38%, #28443f 0%, #091417 62%, #070d0e 100%);
+  background-size: cover, cover, cover, cover;
+  background-position: center, center, center center, center;
+  background-repeat: no-repeat;
+}
+.home .hero-halo {
+  opacity: .045;
+}
+.home .music {
+  position: relative;
+  background-color: #0b1719;
+  background-image:
+    linear-gradient(180deg, rgba(4, 10, 12, .80), rgba(4, 11, 13, .71) 45%, rgba(4, 10, 12, .90)),
+    url("./assets/doors-background.png");
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+}
+.home .music .section-header,
+.home .music .album-grid {
+  position: relative;
+  z-index: 1;
+}
+.home .music .album-art {
+  box-shadow: 0 14px 45px rgba(0,0,0,.34);
+}
+.home .world {
+  background-color: #091517;
+  background-image:
+    linear-gradient(90deg, rgba(4, 11, 14, .95) 0%, rgba(5, 13, 15, .87) 31%, rgba(5, 15, 16, .27) 70%, rgba(4, 11, 14, .15) 100%),
+    url("./assets/unfinished-atlas-map.png"),
+    radial-gradient(ellipse at 75% 45%, #233e3b, #091517 65%);
+  background-size: cover, cover, cover;
+  background-position: center, center center, center;
+  background-repeat: no-repeat;
+}
+.home .world-ornament {
+  opacity: .16;
+}
+.home .world-copy {
+  z-index: 1;
+  position: relative;
+}
+.home .connect {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #091517;
+  background-image:
+    linear-gradient(90deg, rgba(5, 12, 14, .96) 0%, rgba(5, 13, 15, .83) 36%, rgba(7, 17, 19, .18) 74%, rgba(6, 14, 16, .16) 100%),
+    url("./assets/waking-world-signals.png"),
+    radial-gradient(ellipse at 75% 45%, #243d3b, #091517 65%);
+  background-size: cover, cover, cover;
+  background-position: center, center center, center;
+  background-repeat: no-repeat;
+}
+.home .connect > * {
+  position: relative;
+  z-index: 1;
+}
+.home .connect .connect-invitation {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.8vw, 2.6rem);
+  font-weight: 400;
+  font-style: normal;
+  color: #c4aa78;
+  letter-spacing: .025em;
+  line-height: 1.2;
+  margin: -4px 0 25px;
+}
+@media (max-width: 1100px) {
+  .home .hero {
+    background-position: center, center, 60% center, center;
+  }
+  .home .world {
+    background-position: center, 58% center, center;
+  }
+  .home .connect {
+    background-position: center, 60% center, center;
+  }
+}
+@media (max-width: 850px) {
+  .home .hero {
+    background-image:
+      linear-gradient(90deg, rgba(5, 12, 14, .93), rgba(5, 12, 14, .76) 62%, rgba(5, 12, 14, .38)),
+      url("./assets/hero-dreamare-triunio.png"),
+      radial-gradient(ellipse at 65% 30%, #28443f, #091417 68%);
+    background-position: center, 62% center, center;
+  }
+  .home .world {
+    background-image:
+      linear-gradient(90deg, rgba(4, 11, 14, .95) 0%, rgba(4, 11, 14, .83) 50%, rgba(4, 11, 14, .54)),
+      url("./assets/unfinished-atlas-map.png"),
+      radial-gradient(ellipse at 75% 45%, #233e3b, #091517 65%);
+    background-position: center, 68% center, center;
+  }
+  .home .connect {
+    background-image:
+      linear-gradient(90deg, rgba(5, 12, 14, .95), rgba(5, 12, 14, .74) 70%, rgba(5, 12, 14, .46)),
+      url("./assets/waking-world-signals.png"),
+      radial-gradient(ellipse at 75% 45%, #243d3b, #091517 65%);
+    background-position: center, 65% center, center;
+  }
+}
+@media (max-width: 560px) {
+  .home .hero { background-position: center, 66% center, center; }
+  .home .hero h1 { font-size: clamp(2.5rem, 10vw, 3.6rem); }
+  .home .music { background-position: 56% center; }
+  .home .world { background-position: center, 72% center, center; }
+  .home .connect { min-height: 470px; background-position: center, 74% center, center; }
+  .home .connect .connect-invitation { margin-top: 2px; }
+}
