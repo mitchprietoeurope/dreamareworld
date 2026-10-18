@@ -47,3 +47,36 @@
   .hero h1 { font-size: clamp(2.65rem, 11vw, 3.6rem); }
   .hero .scroll-cue { display: none; }
 }
+
+/* Test 2 — mystery doors hero, original serif emphasis (not italic). */
+.hero {
+  background-image:
+    linear-gradient(90deg, rgba(5, 12, 14, .91) 0%, rgba(6, 15, 17, .78) 34%, rgba(7, 17, 18, .53) 70%, rgba(4, 10, 11, .64) 100%),
+    linear-gradient(0deg, rgba(4, 10, 12, .85), transparent 32%, transparent 68%, rgba(4, 10, 12, .46)),
+    url("./assets/doors-mosaic.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero::before { background: none; }
+.hero-halo { opacity: .16; pointer-events: none; }
+.hero-emphasis {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #c4aa78;
+  letter-spacing: -.035em;
+}
+@media (max-width: 850px) {
+  .hero { background-position: 58% center; }
+}
+@media (max-width: 560px) {
+  .hero {
+    background-position: 55% center;
+    background-image:
+      linear-gradient(90deg, rgba(5, 12, 14, .91), rgba(6, 15, 17, .73)),
+      linear-gradient(0deg, rgba(4, 10, 12, .84), transparent 55%, rgba(4, 10, 12, .38)),
+      url("./assets/doors-mosaic.svg");
+  }
+  .hero-emphasis { letter-spacing: -.05em; }
+}
