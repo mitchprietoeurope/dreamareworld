@@ -272,3 +272,60 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   footer .hidden-archive .door-detail,
   .album-art .album-cover { transition: none; }
 }
+
+/* The Archivist's Eye: small, watchful, and centered above Record 047.
+   This is purely decorative; archive access remains server-validated. */
+.archive-eye {
+  width: clamp(122px, 25vw, 160px);
+  height: auto;
+  aspect-ratio: 180 / 98;
+  margin: -19px auto 10px;
+  filter: drop-shadow(0 0 14px rgba(158, 182, 149, .16));
+  pointer-events: none;
+}
+.archive-eye svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.archive-eye .eye-outer {
+  fill: rgba(6, 17, 18, .96);
+  stroke: #bfa77a;
+  stroke-width: 2.5;
+}
+.archive-eye .eye-sclera { fill: url(#sclera-gradient); }
+.archive-eye .eye-lid-line {
+  fill: none;
+  stroke: #bfa77a;
+  stroke-width: 3;
+}
+.archive-eye .eye-gaze {
+  transition: transform 95ms ease-out;
+}
+.archive-eye .eye-open {
+  opacity: 1;
+  transform-origin: 90px 49px;
+  transform: scaleY(1);
+  transition: transform .45s ease-in-out, opacity .25s ease;
+}
+.archive-eye .eye-closed-line,
+.archive-eye .eye-closed-mark {
+  fill: none;
+  stroke: #d0b882;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+.archive-eye.is-closed .eye-open {
+  transform: scaleY(.02);
+  opacity: 0;
+}
+.archive-eye.is-closed .eye-outer {
+  fill: transparent;
+  stroke: transparent;
+}
+.archive-eye.is-closed .eye-closed-line,
+.archive-eye.is-closed .eye-closed-mark { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .archive-eye .eye-open,
+  .archive-eye .eye-gaze,
+  .archive-eye .eye-closed-line,
+  .archive-eye .eye-closed-mark { transition: none; }
+}
