@@ -46,6 +46,7 @@
         content.appendChild(h); paragraphList(content, data.archivistNote);
       }
       content.classList.add("open"); form.hidden = true;
+      document.querySelector("#archive-eye")?.classList.add("is-closed");
       status("ACCESS GRANTED");
       field.value = "";
     } catch (err) {status(err.message || "Unable to retrieve record.", true);}
