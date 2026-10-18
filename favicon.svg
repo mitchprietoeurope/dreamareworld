@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Dreamare D">
+  <title>Dreamare</title>
+  <rect x="1" y="1" width="62" height="62" rx="12" fill="#0b1719"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="9.5" fill="none" stroke="#58746a" stroke-opacity=".58"/>
+  <path d="M13 51V13h19C47 13 53 21 53 32S47 51 32 51H13Z" fill="none" stroke="#c4aa78" stroke-width="1.15" opacity=".42"/>
+  <text x="31.5" y="45" fill="#d7bd87" font-family="Georgia, 'Times New Roman', serif" font-size="43" font-weight="normal" text-anchor="middle">D</text>
+  <path d="M31.5 7 35 10.5 31.5 14 28 10.5Z" fill="#c4aa78" opacity=".85"/>
+</svg>
