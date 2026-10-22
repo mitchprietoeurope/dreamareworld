@@ -329,3 +329,41 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   .archive-eye .eye-closed-line,
   .archive-eye .eye-closed-mark { transition: none; }
 }
+
+/* Dream Archive: Infinite Archive approved background */
+.archive-body {
+  background-color: #070d0e;
+  background-image:
+    linear-gradient(180deg, rgba(5, 12, 14, .47) 0%, rgba(5, 12, 14, .62) 42%, rgba(5, 12, 14, .73) 100%),
+    linear-gradient(90deg, rgba(4, 11, 12, .12), rgba(4, 11, 12, .42) 50%, rgba(4, 11, 12, .12)),
+    url("./assets/dream-archive-background.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.archive-body .record-panel {
+  background: linear-gradient(155deg, rgba(18, 32, 33, .91), rgba(7, 14, 17, .94));
+  border-color: rgba(195, 220, 213, .24);
+  box-shadow: 0 18px 65px rgba(0, 0, 0, .48);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.archive-body .archive-shell h1,
+.archive-body .archive-intro {
+  text-shadow: 0 3px 20px rgba(0, 0, 0, .8);
+}
+@media (max-width: 850px) {
+  .archive-body {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
+@media (max-width: 560px) {
+  .archive-body {
+    background-image:
+      linear-gradient(180deg, rgba(5, 12, 14, .66), rgba(5, 12, 14, .76)),
+      url("./assets/dream-archive-background.png");
+    background-position: 50% top;
+  }
+}
