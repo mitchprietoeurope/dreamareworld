@@ -369,4 +369,4 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
 }
 
 /* Dream Archive texture test: 20% of original grain opacity (.07 -> .014). */
-.archive-body .grain { opacity: .014; }
+.archive-body .grain { display: none; }
