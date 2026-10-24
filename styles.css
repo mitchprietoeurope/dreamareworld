@@ -373,3 +373,40 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
 
 /* Homepage texture-free comparison, matching Dream Archive. */
 .home .grain { display: none; }
+
+/* Decorative section break between recovered dream and Archivist's Note. */
+.record-content .record-note-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2.5vw, 20px);
+  margin: clamp(42px, 7vw, 64px) 0 30px;
+  color: #c4aa78;
+}
+.record-content .record-note-divider::before,
+.record-content .record-note-divider::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 170, 120, .76));
+}
+.record-content .record-note-divider::after {
+  background: linear-gradient(90deg, rgba(196, 170, 120, .76), transparent);
+}
+.record-content .record-note-divider h2 {
+  flex: 0 1 auto;
+  font-family: inherit;
+  font-size: clamp(.59rem, 1.65vw, .76rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: .13em;
+  color: #c4aa78;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .record-content .record-note-divider { gap: 8px; }
+  .record-content .record-note-divider h2 { letter-spacing: .055em; }
+}
