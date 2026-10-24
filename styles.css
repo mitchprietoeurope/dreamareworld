@@ -562,3 +562,46 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   }
   .home .music .music-player-options a { width: 100%; }
 }
+
+/* Official Spotify album player — one featured embed with platform exits. */
+.home .music .music-player-area {
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 60px);
+}
+.home .music .music-player-intro > p:not(.eyebrow) {
+  color: #aebcb6;
+  font-size: .92rem;
+  max-width: 360px;
+  margin: 0 0 24px;
+}
+.home .music .music-player-area .music-player-options {
+  justify-content: flex-start;
+}
+.home .music .music-player-area .music-player-options a {
+  font-size: .62rem;
+  padding: 11px 13px;
+  gap: 10px;
+}
+.home .music .spotify-player {
+  min-width: 0;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgba(196,170,120,.23);
+  background: rgba(7,16,18,.82);
+  box-shadow: 0 20px 48px rgba(0,0,0,.35);
+}
+.home .music .spotify-player iframe {
+  width: 100%;
+  height: 352px;
+  display: block;
+  border: 0;
+  border-radius: 12px;
+}
+@media (max-width: 850px) {
+  .home .music .music-player-area { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .home .music .spotify-player { padding: 5px; }
+  .home .music .spotify-player iframe { height: 352px; }
+}
