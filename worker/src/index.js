@@ -1,6 +1,6 @@
 // Dream Archive / Record 047 — Cloudflare Worker
 // NO recovered text or real recovery key belongs in this public repository.
-// Configure RECOVERY_KEY_047 and RECORD_047_JSON as Cloudflare Worker secrets.
+// Configure RECOVERY_KEY_047 and RECORD_047_PART_1 / RECORD_047_PART_2 as Cloudflare Worker secrets.
 const ALLOWED_ORIGIN = "https://mitchprietoeurope.github.io";
 
 function corsHeaders(origin) {
@@ -48,7 +48,7 @@ export default {
     if (url.pathname !== "/recover" || request.method !== "POST") {
       return json({error:"Not found."},404,origin);
     }
-    if (!env.RECOVERY_KEY_047 || !env.RECORD_047_JSON ||
+    if (!env.RECOVERY_KEY_047 || !env.RECORD_047_PART_1 || !env.RECORD_047_PART_2 ||
         !env.PER_IP_LIMIT || !env.GLOBAL_LIMIT) {
       return json({error:"Archive is not configured."},503,origin);
     }
@@ -81,7 +81,10 @@ export default {
     }
     let record;
     try {
-      record = JSON.parse(env.RECORD_047_JSON);
+      const part1 = JSON.parse(env.RECORD_047_PART_1);
+      const part2 = JSON.parse(env.RECORD_047_PART_2);
+      if (!Array.isArray(part1.paragraphs) || !Array.isArray(part2.paragraphs)) throw Error("Incomplete story");
+      record = {title:part1.title, paragraphs:[...part1.paragraphs,...part2.paragraphs], archivistNote:part2.archivistNote};
       if (!record || !Array.isArray(record.paragraphs) ||
           !record.paragraphs.every(s=>typeof s === "string") ||
           !Array.isArray(record.archivistNote) ||
