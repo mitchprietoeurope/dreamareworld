@@ -81,8 +81,8 @@ export default {
     }
     let record;
     try {
-      const part1 = JSON.parse(env.RECORD_047_PART_1);
-      const part2 = JSON.parse(env.RECORD_047_PART_2);
+      const part1 = JSON.parse(env.RECORD_047_PART_1.replace(/^\uFEFF/, "").trim());
+      const part2 = JSON.parse(env.RECORD_047_PART_2.replace(/^\uFEFF/, "").trim());
       if (!Array.isArray(part1.paragraphs) || !Array.isArray(part2.paragraphs)) throw Error("Incomplete story");
       record = {title:part1.title, paragraphs:[...part1.paragraphs,...part2.paragraphs], archivistNote:part2.archivistNote};
       if (!record || !Array.isArray(record.paragraphs) ||
