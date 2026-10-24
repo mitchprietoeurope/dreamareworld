@@ -410,3 +410,14 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   .record-content .record-note-divider { gap: 8px; }
   .record-content .record-note-divider h2 { letter-spacing: .055em; }
 }
+
+/* Archive record typography — matches the understated italic sans-serif preview. */
+.archive-body .record-content p {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(.95rem, 1.3vw, 1.04rem);
+  line-height: 1.85;
+  letter-spacing: .005em;
+  color: #d4dbd6;
+}
