@@ -42,8 +42,13 @@
       content.appendChild(heading);
       paragraphList(content, data.paragraphs);
       if (Array.isArray(data.archivistNote) && data.archivistNote.length) {
-        const h = document.createElement("h2"); h.textContent = "Archivist's Note — 047";
-        content.appendChild(h); paragraphList(content, data.archivistNote);
+        const divider = document.createElement("div");
+        divider.className = "record-note-divider";
+        const h = document.createElement("h2");
+        h.textContent = "ARCHIVIST’S NOTE — 047";
+        divider.appendChild(h);
+        content.appendChild(divider);
+        paragraphList(content, data.archivistNote);
       }
       content.classList.add("open"); form.hidden = true;
       document.querySelector("#archive-eye")?.classList.add("is-closed");
