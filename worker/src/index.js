@@ -73,7 +73,7 @@ export default {
       return json({error:"Invalid request."},400,origin);
     }
     if (!payload || payload.record !== "047" ||
-        typeof payload.key !== "string" || !/^\\d{4}$/.test(payload.key)) {
+        typeof payload.key !== "string" || !/^\d{4}$/.test(payload.key)) {
       return json({error:"Invalid request."},400,origin);
     }
     if (!(await matchingKey(payload.key, env.RECOVERY_KEY_047))) {
