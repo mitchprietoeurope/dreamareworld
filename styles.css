@@ -397,7 +397,7 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
 .record-content .record-note-divider h2 {
   flex: 0 1 auto;
   font-family: inherit;
-  font-size: clamp(.59rem, 1.65vw, .76rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.18rem);
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: .13em;
@@ -408,7 +408,11 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
 }
 @media (max-width: 480px) {
   .record-content .record-note-divider { gap: 8px; }
-  .record-content .record-note-divider h2 { letter-spacing: .055em; }
+  .record-content .record-note-divider h2 {
+    font-size: 1.05rem;
+    letter-spacing: .025em;
+    line-height: 1.35;
+  }
 }
 
 /* Archive record typography — matches the understated italic sans-serif preview. */
