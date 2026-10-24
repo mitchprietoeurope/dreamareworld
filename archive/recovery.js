@@ -37,9 +37,12 @@
       const data = await response.json();
       if (!data || !Array.isArray(data.paragraphs)) throw new Error("Invalid archive response.");
       content.replaceChildren();
+      const storyTitle = document.createElement("div");
+      storyTitle.className = "record-note-divider record-story-title";
       const heading = document.createElement("h2");
-      heading.textContent = data.title || "A Caixa e a Senha";
-      content.appendChild(heading);
+      heading.textContent = data.title || "The Box and the Password";
+      storyTitle.appendChild(heading);
+      content.appendChild(storyTitle);
       paragraphList(content, data.paragraphs);
       if (Array.isArray(data.archivistNote) && data.archivistNote.length) {
         const divider = document.createElement("div");
