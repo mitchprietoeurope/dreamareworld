@@ -1,7 +1,7 @@
 // Dream Archive / Record 047 — Cloudflare Worker
 // NO recovered text or real recovery key belongs in this public repository.
 // Configure RECOVERY_KEY_047 and RECORD_047_PART_1 / RECORD_047_PART_2 as Cloudflare Worker secrets.
-const ALLOWED_ORIGIN = "https://mitchprietoeurope.github.io";
+const ALLOWED_ORIGINS = new Set(["https://dreamareworld.com", "https://www.dreamareworld.com", "https://mitchprietoeurope.github.io"]);
 
 function corsHeaders(origin) {
   const h = new Headers({
@@ -9,8 +9,8 @@ function corsHeaders(origin) {
     "Content-Type": "application/json; charset=utf-8",
     "Vary": "Origin"
   });
-  if (origin === ALLOWED_ORIGIN) {
-    h.set("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
+  if (ALLOWED_ORIGINS.has(origin)) {
+    h.set("Access-Control-Allow-Origin", origin);
     h.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     h.set("Access-Control-Allow-Headers", "Content-Type");
     h.set("Access-Control-Max-Age", "600");
@@ -38,7 +38,7 @@ export default {
     const origin = request.headers.get("Origin") || "";
     const url = new URL(request.url);
 
-    if (origin !== ALLOWED_ORIGIN) {
+    if (!ALLOWED_ORIGINS.has(origin)) {
       return json({error:"Origin not allowed."},403,origin);
     }
     if (request.method === "OPTIONS") {
