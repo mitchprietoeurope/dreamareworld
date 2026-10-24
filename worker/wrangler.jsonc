@@ -1,0 +1,24 @@
+{
+  "name": "dreamare-archive",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-24",
+  "workers_dev": true,
+  "ratelimits": [
+    {
+      "name": "PER_IP_LIMIT",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    },
+    {
+      "name": "GLOBAL_LIMIT",
+      "namespace_id": "1002",
+      "simple": {
+        "limit": 25,
+        "period": 60
+      }
+    }
+  ]
+}
