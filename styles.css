@@ -421,3 +421,16 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   letter-spacing: .005em;
   color: #d4dbd6;
 }
+
+/* Matching gold ruled heading for the dream title, without changing its text. */
+.record-content .record-story-title {
+  margin: 0 0 clamp(26px, 4vw, 38px);
+}
+.record-content .record-story-title h2 {
+  letter-spacing: .13em;
+}
+@media (max-width: 480px) {
+  .record-content .record-story-title h2 {
+    letter-spacing: .055em;
+  }
+}
