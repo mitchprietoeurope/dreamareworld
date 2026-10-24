@@ -620,3 +620,28 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   align-self: flex-start;
   justify-content: flex-start;
 }
+
+/* Keep the brand tagline inside the header instead of overlapping the hero. */
+.home .site-header .wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  line-height: 1.1;
+  min-width: 0;
+}
+.home .site-header .wordmark-name {
+  display: inline-block;
+  white-space: nowrap;
+}
+.home .site-header .wordmark-tagline {
+  color: #aecbc0;
+  font-size: .52rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+@media (max-width: 850px) {
+  .home .site-header .wordmark-tagline { display: none; }
+}
