@@ -1,3 +1,3 @@
-// The Cloudflare Worker URL is added here AFTER deployment.
-// Do not put the recovery key or protected archive content in this file.
-window.DREAM_ARCHIVE_API_BASE = "";
+// Public endpoint of the Dream Archive Cloudflare Worker.
+// The recovery key and protected story content are stored in Cloudflare secrets.
+window.DREAM_ARCHIVE_API_BASE = "https://dreamare-archive.mitchprietoeurope.workers.dev";
