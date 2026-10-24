@@ -605,3 +605,18 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
   .home .music .spotify-player { padding: 5px; }
   .home .music .spotify-player iframe { height: 352px; }
 }
+
+/* Keep platform buttons flush with the left edge of the player description. */
+.home .music .music-player-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.home .music .music-player-intro .music-player-options {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-self: flex-start;
+  justify-content: flex-start;
+}
