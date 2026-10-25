@@ -24,6 +24,20 @@ function json(body, status, origin) {
   });
 }
 
+// Aggregated, anonymous counters: never record IPs, submitted keys or story content.
+// Cloudflare Analytics Engine is optional; a metrics failure must never block recovery.
+function trackRecovery(env, outcome) {
+  try {
+    env.ARCHIVE_ANALYTICS?.writeDataPoint({
+      blobs: ["047", outcome],
+      doubles: [1],
+      indexes: ["047"]
+    });
+  } catch {
+    // Analytics is deliberately best-effort.
+  }
+}
+
 async function matchingKey(supplied, expected) {
   const encoder = new TextEncoder();
   const hash = async s => new Uint8Array(await crypto.subtle.digest("SHA-256", encoder.encode(s)));
@@ -50,6 +64,7 @@ export default {
     }
     if (!env.RECOVERY_KEY_047 || !env.RECORD_047_PART_1 || !env.RECORD_047_PART_2 ||
         !env.PER_IP_LIMIT || !env.GLOBAL_LIMIT) {
+      trackRecovery(env, "unavailable");
       return json({error:"Archive is not configured."},503,origin);
     }
     // Lightweight perimeter defense for a four-digit key. Limiters are
@@ -60,23 +75,27 @@ export default {
       env.GLOBAL_LIMIT.limit({key:"archive047:all"})
     ]);
     if (!local.success || !global.success) {
+      trackRecovery(env, "rate_limited");
       return json({error:"Too many attempts. Please return later."},429,origin);
     }
     const size = Number(request.headers.get("Content-Length") || "0");
-    if (size > 1024) return json({error:"Invalid request."},400,origin);
+    if (size > 1024) { trackRecovery(env, "invalid_request"); return json({error:"Invalid request."},400,origin); }
     let payload;
     try {
       const raw = await request.text();
-      if (raw.length > 1024) return json({error:"Invalid request."},400,origin);
+      if (raw.length > 1024) { trackRecovery(env, "invalid_request"); return json({error:"Invalid request."},400,origin); }
       payload = JSON.parse(raw);
     } catch {
+      trackRecovery(env, "invalid_request");
       return json({error:"Invalid request."},400,origin);
     }
     if (!payload || payload.record !== "047" ||
         typeof payload.key !== "string" || !/^\d{4}$/.test(payload.key)) {
+      trackRecovery(env, "invalid_request");
       return json({error:"Invalid request."},400,origin);
     }
     if (!(await matchingKey(payload.key, env.RECOVERY_KEY_047))) {
+      trackRecovery(env, "wrong_key");
       return json({error:"Recovery key not recognized."},401,origin);
     }
     let record;
@@ -90,8 +109,10 @@ export default {
           !Array.isArray(record.archivistNote) ||
           !record.archivistNote.every(s=>typeof s === "string")) throw Error("Invalid record");
     } catch {
+      trackRecovery(env, "unavailable");
       return json({error:"Archive record unavailable."},503,origin);
     }
+    trackRecovery(env, "success");
     return json({
       title: typeof record.title === "string" ? record.title : "A Caixa e a Senha",
       paragraphs: record.paragraphs,
