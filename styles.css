@@ -646,3 +646,116 @@ footer .hidden-archive:focus-visible { outline: 1px solid #d5b57b; outline-offse
     line-height: 1.35;
   }
 }
+
+
+/* 04 / The Dreamer — creator identity without revealing the Archivist. */
+.home .dreamer {
+  background: radial-gradient(ellipse at 28% 42%, rgba(34,65,59,.22), transparent 62%), #081113;
+  border-top: 1px solid rgba(196,170,120,.17);
+  padding-top: clamp(70px, 9vw, 136px);
+  padding-bottom: clamp(75px, 9vw, 142px);
+}
+.home .dreamer > .eyebrow {
+  color: #c4aa78;
+  margin-bottom: clamp(28px, 4vw, 54px);
+}
+.home .dreamer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(30px, 6vw, 96px);
+}
+.home .dreamer-portrait {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 760 / 880;
+  min-height: 320px;
+  background: linear-gradient(145deg, rgba(18,39,36,.9), rgba(5,11,13,.98));
+  border: 1px solid rgba(196,170,120,.3);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+.home .dreamer-portrait::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3,11,12,.75), transparent 38%), linear-gradient(120deg, rgba(8,25,25,.18), transparent 60%);
+}
+.home .dreamer-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: saturate(.78) contrast(1.05);
+}
+.home .dreamer-portrait img[hidden] { display: none; }
+.home .dreamer-portrait-label {
+  position: absolute;
+  bottom: 22px;
+  left: 24px;
+  z-index: 1;
+  color: #dfc69b;
+  font-size: .6rem;
+  letter-spacing: .22em;
+}
+.home .dreamer-copy { max-width: 620px; }
+.home .dreamer-copy h2 {
+  font-size: clamp(2.1rem, 4vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  margin: 0 0 clamp(24px, 3vw, 42px);
+}
+.home .dreamer-copy h2 em {
+  color: #c4aa78;
+  font-style: normal;
+}
+.home .dreamer-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 9px 22px;
+  color: #ead8b7 !important;
+  font-size: .95rem !important;
+  letter-spacing: .14em;
+  margin-bottom: 27px !important;
+}
+.home .dreamer-name span {
+  color: #9db4a9;
+  font-size: .66rem;
+  letter-spacing: .13em;
+}
+.home .dreamer-copy > p:not(.dreamer-name) {
+  color: #b6c7bf;
+  font-size: clamp(.93rem, 1.15vw, 1.03rem);
+  line-height: 1.85;
+  margin: 0 0 19px;
+}
+.home .dreamer-final {
+  margin-top: clamp(27px, 4vw, 48px);
+  padding-top: 22px;
+  border-top: 1px solid rgba(196,170,120,.35);
+}
+.home .dreamer-final p {
+  margin: 0 0 10px;
+  font-size: .79rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: #dbe3dc;
+}
+.home .dreamer-final .dreamer-question {
+  color: #d1b47d;
+  font-size: clamp(.9rem, 1.35vw, 1.12rem);
+  letter-spacing: .16em;
+}
+@media (max-width: 850px) {
+  .home .dreamer-layout { grid-template-columns: 1fr; gap: 38px; }
+  .home .dreamer-portrait { width: min(100%, 490px); margin-inline: auto; }
+  .home .dreamer-copy { max-width: 650px; }
+}
+@media (max-width: 560px) {
+  .home .dreamer-portrait { min-height: 0; }
+  .home .dreamer-copy h2 { font-size: clamp(2.15rem, 9vw, 3rem); }
+  .home .dreamer-name { display: block; }
+  .home .dreamer-name span { display: block; margin-top: 8px; }
+}
